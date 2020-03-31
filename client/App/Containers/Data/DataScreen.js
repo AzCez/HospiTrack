@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import SamplesActions from '../../Stores/Samples/Actions'
 import Style from './DataScreenStyle'
-import { Helpers, Images, Metrics } from 'App/Theme'
+import { Helpers, Images, Metrics } from '../../Theme'
+import { NEXT_SAMPLE_DELAY } from '../../Consts';
 
 class DataScreen extends React.Component {
   componentDidMount() {
@@ -69,7 +70,9 @@ class DataScreen extends React.Component {
                 </Text>
               ) : (
                 <View>
-                {gpsData}
+                  <Text style={Helpers.textCenter}>Sample no. {this.props.samplesCounter}</Text>
+                  <Text style={Helpers.textCenter}>Sampling each { NEXT_SAMPLE_DELAY / 1000 } seconds</Text>
+                  {gpsData}
                 </View>
               )}
             <ScrollView>
@@ -113,6 +116,7 @@ const mapStateToProps = (state) => ({
   gpsLocation: state.gps.gpsLocation && state.gps.gpsLocation.coords,
   gpsLocationIsLoading: state.gps.gpsLocationIsLoading,
   gpsLocationErrorMessage: state.gps.gpsLocationErrorMessage,
+  samplesCounter: state.wifi.samplesCounter
 })
 
 const mapDispatchToProps = (dispatch) => ({

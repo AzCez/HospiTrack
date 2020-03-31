@@ -32,7 +32,8 @@ export const fetchWifiListFailure = (state, { errorMessage }) => ({
 
 export const sampleSent = (state) => ({
   ...state,
-  sampleSent: true
+  sampleSent: true,
+  samplesCounter: state.samplesCounter + 1
 });
 
 /**

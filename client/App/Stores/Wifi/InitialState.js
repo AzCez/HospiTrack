@@ -5,5 +5,6 @@ export const INITIAL_STATE = {
   wifiList: undefined,
   wifiListIsLoading: false,
   wifiListErrorMessage: null,
-  sampleSent: false
+  sampleSent: false,
+  samplesCounter: 0
 }
